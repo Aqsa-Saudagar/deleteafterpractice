@@ -14,9 +14,9 @@ app: nginxpodrs
 template: 
 
 metadata:  #tags , assigning metadata to pod
-    name: nginxpodrs 
-    labels:
-    app: nginxpodrs  
+name: nginxpodrs 
+labels: 
+app: nginxpodrs
 spec:  #pod specifications.
    containers:
       - image: nginx:latest #containers images that will be used to create pod

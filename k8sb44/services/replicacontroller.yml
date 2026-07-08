@@ -13,7 +13,7 @@ app: nginxpodrc
 template: 
 
 metadata:  #tags , assigning metadata to pod
-    name: nginxpod  
+    name: nginxpodrc  
     labels:
     app: nginxpodrc   
 spec:  #pod specifications.
