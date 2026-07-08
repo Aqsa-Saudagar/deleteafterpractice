@@ -1,0 +1,25 @@
+apiversion: v1
+kind: replicationcontroller
+
+metadata:
+name: webappreplicacontroller
+labels:
+app: webappreplicacontroller
+
+spec:
+replicas: 3
+selector: 
+app: nginxpodrc
+template: 
+
+metadata:  #tags , assigning metadata to pod
+    name: nginxpod  
+    labels:
+    app: nginxpodrc   
+spec:  #pod specifications.
+   containers:
+      - image: nginx:latest #containers images that will be used to create pod
+        ports:
+           - containerPort: 80 #container port 
+        name: nginxcont
+

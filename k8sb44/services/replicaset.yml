@@ -1,0 +1,26 @@
+apiversion: apps/v1
+kind: replicaset
+
+metadata:
+name: webapprs
+labels:
+app: webapprs
+
+spec:
+replicas: 3
+selector: 
+matchlabels: 
+app: nginxpodrs
+template: 
+
+metadata:  #tags , assigning metadata to pod
+    name: nginxpodrs 
+    labels:
+    app: nginxpodrs  
+spec:  #pod specifications.
+   containers:
+      - image: nginx:latest #containers images that will be used to create pod
+        ports:
+           - containerPort: 80 #container port 
+        name: nginxcont
+
