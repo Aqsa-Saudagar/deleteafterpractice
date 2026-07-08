@@ -1,27 +1,26 @@
-apiversion: apps/v1
-kind: replicaset
+apiVersion: apps/v1
+kind: ReplicaSet
 
 metadata:
-name: webapprs
-labels:
-app: webapprs
+  name: webapprs
+  labels:
+    app: webapprs
 
 spec:
-replicas: 3
-selector: 
-matchLabels: 
-app: nginxpodrs
-template: 
+  replicas: 3
 
-metadata:  #tags , assigning metadata 
-labels: 
-app: nginxpodrs
-spec:  #pod specifications.
-  spec:
-  containers:
-    - name: nginxpodrs
-      image: nginx:latest
-      ports:
-        - containerPort: 80
-        
+  selector:
+    matchLabels:
+      app: nginxpodrs
 
+  template:
+    metadata:
+      labels:
+        app: nginxpodrs
+
+    spec:
+      containers:
+        - name: nginxpodrs
+          image: nginx:latest
+          ports:
+            - containerPort: 80
