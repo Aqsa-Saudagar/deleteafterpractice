@@ -13,13 +13,15 @@ app: nginxpodrc
 template: 
 
 metadata:  #tags , assigning metadata to pod
-    name: nginxpodrc  
+     
     labels:
     app: nginxpodrc   
 spec:  #pod specifications.
    containers:
-      - image: nginx:latest #containers images that will be used to create pod
-        ports:
-           - containerPort: 80 #container port 
-        name: nginxcont
+   - name: nginxpodrc
+    image: nginx:latest 
+    ports: 
+  
+  - containerPort: 80
+        
 

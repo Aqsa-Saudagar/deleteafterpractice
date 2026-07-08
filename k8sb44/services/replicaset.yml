@@ -13,14 +13,14 @@ matchlabels:
 app: nginxpodrs
 template: 
 
-metadata:  #tags , assigning metadata to pod
-name: nginxpodrs 
+metadata:  #tags , assigning metadata 
 labels: 
 app: nginxpodrs
 spec:  #pod specifications.
    containers:
-      - image: nginx:latest #containers images that will be used to create pod
-        ports:
-           - containerPort: 80 #container port 
-        name: nginxcont
+   - name: nginxpodrs
+    image: nginx:latest
+    port:
+- containerPort: 80
+        
 
