@@ -1,26 +1,24 @@
-apiversion: v1
-kind: replicationcontroller
+apiVersion: v1
+kind: ReplicationController
 
 metadata:
-name: webappreplicacontroller
-labels:
-app: webappreplicacontroller
+  name: webapprc
+  labels:
+    app: webapprc
 
 spec:
-replicas: 3
-selector: 
-app: nginxpodrc
-template: 
+  replicas: 3
+  selector:
+    app: nginxpodrc
 
-metadata:  #tags , assigning metadata to pod
-     
-    labels:
-    app: nginxpodrc   
-spec:  #pod specifications.
-  spec:
-  containers:
-    - name: nginxpodrs
-      image: nginx:latest
-      ports:
-        - containerPort: 80
+  template:
+    metadata:
+      labels:
+        app: nginxpodrc
 
+    spec:
+      containers:
+        - name: nginxpodrc
+          image: nginx:latest
+          ports:
+            - containerPort: 80
