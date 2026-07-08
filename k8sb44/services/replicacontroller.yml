@@ -17,11 +17,10 @@ metadata:  #tags , assigning metadata to pod
     labels:
     app: nginxpodrc   
 spec:  #pod specifications.
-   containers:
-   - name: nginxpodrc
-    image: nginx:latest 
-    ports: 
-  
-  - containerPort: 80
-        
+  spec:
+  containers:
+    - name: nginxpodrs
+      image: nginx:latest
+      ports:
+        - containerPort: 80
 

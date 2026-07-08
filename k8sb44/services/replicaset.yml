@@ -9,7 +9,7 @@ app: webapprs
 spec:
 replicas: 3
 selector: 
-matchlabels: 
+matchLabels: 
 app: nginxpodrs
 template: 
 
@@ -17,10 +17,11 @@ metadata:  #tags , assigning metadata
 labels: 
 app: nginxpodrs
 spec:  #pod specifications.
-   containers:
-   - name: nginxpodrs
-    image: nginx:latest
-    port:
-- containerPort: 80
+  spec:
+  containers:
+    - name: nginxpodrs
+      image: nginx:latest
+      ports:
+        - containerPort: 80
         
 
