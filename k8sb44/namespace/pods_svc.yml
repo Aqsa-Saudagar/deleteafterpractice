@@ -1,0 +1,30 @@
+apiVersion:  v1  #required api library calls for the pod creation         
+kind: Pod #unique naming convention 
+metadata:  #tags , assigning metadata to pod
+    name: cipod 
+    namespace: amazon   
+    labels: 
+    app: cipod 
+spec:  #pod specifications.
+   containers:
+      - image: nginx:latest #containers images that will be used to create pod
+        ports:
+           - containerPort: 80 #container port 
+        name: nginxcont
+
+#kubectl run nginxpod  --image nginx:latest
+
+---
+apiversion: v1
+kind: service
+metadata:
+name: ciservice
+namespace: amazon
+spec:
+selector: 
+app: cipod
+type: ClusterIP
+ports:
+- port: 80
+targetport: 80
+protocol: TCP
