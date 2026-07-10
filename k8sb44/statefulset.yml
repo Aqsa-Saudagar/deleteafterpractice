@@ -1,23 +1,23 @@
-apiVersion:  apps/v1   
+apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-    name: ssdb
-    labels:
-       app: ssdb
+  name: ssdb
 spec:
+  serviceName: ssdb
   replicas: 3
-  template: 
-      metadata:
-          name: ssdb
-          labels:
-             app: ssdb
-      spec: 
-        containers:
-        - name: ssdb
+  selector:
+    matchLabels:
+      app: ssdb
+  template:
+    metadata:
+      labels:
+        app: ssdb
+    spec:
+      containers:
+      - name: ssdb
         image: mysql:latest
         ports:
-           - containerport: 3306
-             protocol: TCP
-        env: 
-          - name: MYSOL_ROOT_PASSWORD
-            value: "123456"            
+        - containerPort: 3306
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: "123456"
