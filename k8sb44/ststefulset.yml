@@ -1,0 +1,23 @@
+apiVersion:  apps/v1   
+kind: statefulset
+metadata:
+    name: ssdb
+    labels:
+       app: ssdb
+spec:
+  replicas: 3
+  template: 
+      metadata:
+          name: ssdb
+          labels:
+             app: ssdb
+      spec: 
+        containers:
+        - name: ssdb
+        image: mysql:latest
+        ports:
+           - containerport: 3306
+             protocol: TCP
+        env: 
+          - name: MYSOL_ROOT_PASSWORD
+            value: "123456"            
