@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mederp
+  labels:
+    app: mederp
+
+spec:
+  replicas: 4
+
+  selector:
+    matchLabels:
+      app: mederp
+
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+
+  template:
+    metadata:
+      labels:
+        app: mederp
+
+    spec:
+      containers:
+        - name: http
+          image: nginx
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
