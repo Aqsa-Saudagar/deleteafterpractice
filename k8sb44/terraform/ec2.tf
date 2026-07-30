@@ -1,20 +1,20 @@
 provider "aws" {
   region = "ap-south-1"
-  access_key = "my-access-key"
-  secret_key = "my-secret-key"
+  profile = "configs"
 } 
 
 
 
 resource "aws_instance"  "webserver" {
-    ami = "ami-09d88f7c4c272b0c5" 
-    instance_type = "t3.micro"
-    vpc_security_group_ids =  ["sg-0d06a29eacde65701" , aws_security_group.webserver_sg.id ]
-    key_name = "linuxkey"
+    ami = var.amiid 
+    instance_type = var.insttype
+    vpc_security_group_ids =  [ var.sg  , aws_security_group.webserver_sg.id ]
+    key_name = var.kp
     tags = {
         purpose = "webserver"
     }
-    count = 2 
+    count = var.instno
+     disable_api_termination = var.apiterm
     user_data = <<-EOF
                  #!/bin/bash
                  sudo yum install nginx -y
