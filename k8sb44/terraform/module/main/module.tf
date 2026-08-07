@@ -1,19 +1,17 @@
+module "vpc" {
+  source = "../resource/vpc"
 
-
-module "ec2" {
-  source = "/root/deleteafterpractice/k8sb44/terraform/module/resource/ec2"
-  amiid = "ami-0bdc7d025135d7b49"
-  insttype = "t3.micro"
-  sg = "sg-0eae0d103615165a6"
-  kp = "key"
-  apiterm = false 
-  ws_subnet = module.vpc.subnet_id
-
+  this_cidr    = "10.0.0.0/16"
+  this_subcidr = "10.0.0.0/24"
 }
 
-module "vpc" {
-    source = "/root/deleteafterpractice/k8sb44/terraform/module/resource/vpc"
-    this_cidr =  "10.0.0.0/16" 
-    this_subcidr = "10.0.0.0/24"
+module "ec2" {
+  source = "../resource/ec2"
 
+  amiid      = "ami-0bdc7d025135d7b49"
+  insttype   = "t3.micro"
+  sg         = module.vpc.security_group_id
+  kp         = "key"
+  apiterm    = false
+  ws_subnet  = module.vpc.subnet_id
 }
