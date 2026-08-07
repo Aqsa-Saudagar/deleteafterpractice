@@ -6,9 +6,6 @@ variable "insttype" {
   type = string
 }
 
-variable "sg" {
-  type = string
-}
 
 variable "kp" {
   type = string
