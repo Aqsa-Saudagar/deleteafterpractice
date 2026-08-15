@@ -7,7 +7,7 @@ data "aws_vpc" "default" {
   default = true
 }
 
-data "aws_subnet" "default_subnet" {
+data "aws_subnets" "default_subnet" {
   filter {
     name   = "availability-zone"
     values = ["ap-south-1c" , "ap-south-1b"]  #change az
