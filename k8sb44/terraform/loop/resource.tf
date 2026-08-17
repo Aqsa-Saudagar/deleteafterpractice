@@ -16,6 +16,8 @@ resource "aws_instance"  "webserver" {
 resource "aws_security_group" "webserver_sg" {
         
     name = "tf-sg2"
+    vpc_id = "vpc-0591b29460b1d52b9"
+
     ingress {
       from_port = 80
       to_port = 80
@@ -47,7 +49,8 @@ resource "aws_instance"  "webservertwo" {
     for_each = toset(var.imageid)    #unidenticalloops
     ami = each.value
     instance_type = var.insttype
-    vpc_security_group_ids =  [ var.sg]
+     subnet_id = "subnet-0787e598dffd17ca0"
+    vpc_security_group_ids = [aws_security_group.webserver_sg.id] 
     key_name = var.kp
 
 }
