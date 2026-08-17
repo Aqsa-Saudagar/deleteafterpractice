@@ -7,10 +7,10 @@ variable "insttype" {
 }
 
 variable "sg" {
-   default = "sg-0eae0d103615165a6"
+   default = "sg-06066431b22e6930f"
 }
 
 variable "kp" {
-    default = "kp"
+    default = "key"
 
 }
